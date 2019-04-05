@@ -1,25 +1,25 @@
 /*
- * Copyright (c) 2008-2018, Harald Walker (bitwalker.eu) and contributing developers  
+ * Copyright (c) 2008-2018, Harald Walker (bitwalker.eu) and contributing developers
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that the
  * following conditions are met:
- * 
+ *
  * * Redistributions of source code must retain the above
  * copyright notice, this list of conditions and the following
  * disclaimer.
- * 
+ *
  * * Redistributions in binary form must reproduce the above
  * copyright notice, this list of conditions and the following
  * disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
+ *
  * * Neither the name of bitwalker nor the names of its
  * contributors may be used to endorse or promote products
  * derived from this software without specific prior written
  * permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
  * CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -46,33 +46,32 @@ import org.junit.Test;
 
 /**
  * Test class for application detection.
- * 
+ *
  * @author harald
- * 
  */
 public class ApplicationTest {
 
-	/**
-	 * Test method for
-	 * {@link eu.bitwalker.useragentutils.Application#isInReferrerString(java.lang.String)}
-	 */
-	@Test
-	public void testIsBrowser() {
-		assertTrue(Application.GMAIL
-				.isInReferrerString("http://mail.google.com/mail/?ui=1&ik=xx&view=cv&search=inbox&th=xx&ww=xx&cvap=5&qt=&zx=xx"));
-	}
+    /**
+     * Test method for
+     * {@link eu.bitwalker.useragentutils.Application#isInReferrerString(java.lang.String)}
+     */
+    @Test
+    public void testIsBrowser() {
+        assertTrue(Application.GMAIL
+                .isInReferrerString("http://mail.google.com/mail/?ui=1&ik=xx&view=cv&search=inbox&th=xx&ww=xx&cvap=5&qt=&zx=xx"));
+    }
 
-	/**
-	 * Test if generated id values are unique.
-	 */
-	@Test
-	public void testUniqueIdValues() {
-		List<Short> retrievedIdValues = new ArrayList<Short>();
+    /**
+     * Test if generated id values are unique.
+     */
+    @Test
+    public void testUniqueIdValues() {
+        List<Short> retrievedIdValues = new ArrayList<Short>();
 
-		for (Application application : Application.values()) {
-			assertTrue(!retrievedIdValues.contains(application.getId()));
-			retrievedIdValues.add(application.getId());
-		}
-	}
+        for (Application application : Application.values()) {
+            assertTrue(!retrievedIdValues.contains(application.getId()));
+            retrievedIdValues.add(application.getId());
+        }
+    }
 
 }
