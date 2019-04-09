@@ -1,6 +1,10 @@
 buildscript {
     repositories {
+        jcenter()
         mavenLocal()
+    }
+    dependencies {
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
     }
 }
 
@@ -11,14 +15,15 @@ apply plugin: "java"
 apply plugin: "maven"
 apply plugin: "eclipse"
 apply plugin: "idea"
-apply plugin: 'maven-publish'
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.bintray"
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 repositories {
     mavenLocal()
-    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url "https://jcenter.bintray.com" }
 }
 dependencies {
     testCompile group: "junit", name: "junit", version: "4.12"
@@ -36,17 +41,22 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-
-            artifactId "user-agent-utils"
-            pom.withXml {
-                def pomNode = asNode()
-                // version-less dependencies are handled with dependencyManagement
-                pomNode.dependencies.dependency.findAll {
-                    it.version.text().isEmpty()
-                }.each {
-                    it.replaceNode {}
-                }
-            }
         }
+    }
+}
+
+bintray {
+    user = project.getProperty("bintrayUser") ?: System.getenv("BINTRAY_USER")
+    key = project.getProperty("bintrayKey") ?: System.getenv("BINTRAY_KEY")
+    publications = ["mavenJava"]
+    dryRun = false
+    publish = true //[Default: false] Whether version should be auto published after an upload
+//    override = true
+    pkg {
+        repo = "maven"
+        name = "user-agent-utils"
+        userOrg = "wizpanda"
+        licenses = ["Apache-2.0"]
+        vcsUrl = "https://github.com/wizpanda/user-agent-utils"
     }
 }
