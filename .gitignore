@@ -64,4 +64,10 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+.gradle
+build/
+out/
+.idea/*
+!.idea/.name
+
 

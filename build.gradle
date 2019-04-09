@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+group "com.wizpanda"
+version "0.0.1"
+
+apply plugin: "java"
+apply plugin: "maven"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenLocal()
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    testCompile group: "junit", name: "junit", version: "4.12"
+}
+
+install.doLast {
+    println jar.archiveName
+}
+
+artifacts {
+    archives jar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            artifactId "user-agent-utils"
+            pom.withXml {
+                def pomNode = asNode()
+                // version-less dependencies are handled with dependencyManagement
+                pomNode.dependencies.dependency.findAll {
+                    it.version.text().isEmpty()
+                }.each {
+                    it.replaceNode {}
+                }
+            }
+        }
+    }
+}
