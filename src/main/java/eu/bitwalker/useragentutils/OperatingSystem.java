@@ -429,8 +429,7 @@ public enum OperatingSystem {
         }
 
         // same behavior as standard valueOf(string) method
-        throw new IllegalArgumentException(
-                "No enum const for id " + id);
+        throw new IllegalArgumentException("No enum const for id " + id);
     }
 
 }

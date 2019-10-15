@@ -14,27 +14,27 @@ public class UserAgentHelper {
         return new UserAgentHelper(userAgent);
     }
 
-    UserAgentHelper(UserAgent userAgent) {
+    private UserAgentHelper(UserAgent userAgent) {
         this.userAgent = userAgent;
     }
 
-    boolean isiOS() {
-        return isOs(OperatingSystem.IOS);
+    public boolean isiOS() {
+        return isOS(OperatingSystem.IOS);
     }
 
-    boolean isAndroid() {
-        return isOs(OperatingSystem.ANDROID);
+    public boolean isAndroid() {
+        return isOS(OperatingSystem.ANDROID);
     }
 
-    boolean isWindows() {
-        return isOs(OperatingSystem.WINDOWS);
+    public boolean isWindows() {
+        return isOS(OperatingSystem.WINDOWS);
     }
 
-    boolean isOSX() {
-        return isOs(OperatingSystem.MAC_OS_X) || isOs(OperatingSystem.MAC_OS);
+    public boolean isMacOS() {
+        return isOS(OperatingSystem.MAC_OS_X) || isOS(OperatingSystem.MAC_OS);
     }
 
-    private boolean isOs(OperatingSystem osForChecking) {
+    public boolean isOS(OperatingSystem osForChecking) {
         OperatingSystem os = userAgent.getOperatingSystem();
         return os.getGroup() == osForChecking || os == osForChecking;
     }
