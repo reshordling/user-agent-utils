@@ -73,7 +73,7 @@ public class UserAgent implements Serializable {
     private Browser browser;
     private int id;
     private String userAgentString;
-
+    private UserAgentHelper helper = UserAgentHelper.from(this);
 
     /**
      * This constructor is created for APIs that require default constructor
@@ -141,6 +141,10 @@ public class UserAgent implements Serializable {
      */
     public Browser getBrowser() {
         return browser;
+    }
+
+    public UserAgentHelper getHelper() {
+        return this.helper;
     }
 
     /**
