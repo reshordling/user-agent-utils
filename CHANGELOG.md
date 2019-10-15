@@ -1,5 +1,10 @@
 # Change Log
 
+## v0.0.2
+
+1. Added `static UserAgent from(HttpServletRequest request)` method.
+2. Added a `UserAgentHelper` class for some quick operations and checks.
+
 ## v0.0.1
 
 1. Changing the groupId to `com.wizpanda`
