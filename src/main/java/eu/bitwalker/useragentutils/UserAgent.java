@@ -37,6 +37,7 @@
 
 package eu.bitwalker.useragentutils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 
 /**
@@ -66,6 +67,7 @@ import java.io.Serializable;
  */
 public class UserAgent implements Serializable {
 
+    private static final String AGENT_INFO_TOKEN = "parsed-user-agent-instance";
     private static final long serialVersionUID = 7025462762784240212L;
     private OperatingSystem operatingSystem;
     private Browser browser;
@@ -155,6 +157,27 @@ public class UserAgent implements Serializable {
      */
     public String toString() {
         return this.operatingSystem.toString() + "-" + this.browser.toString();
+    }
+
+    /**
+     * Parse the user-agent from given {@link HttpServletRequest} and return. Since the user-agent parsing is a resource intensive
+     * operation, the parsed instance will be added to the request's attribute so that next invoke of this method can return the already
+     * parsed value.
+     *
+     * @param request Java's {@link HttpServletRequest}
+     * @return Instance of {@link UserAgent}
+     */
+    public static UserAgent from(HttpServletRequest request) {
+        UserAgent userAgent = (UserAgent) request.getAttribute(AGENT_INFO_TOKEN);
+        if (userAgent != null) {
+            return userAgent;
+        }
+
+        String userAgentString = request.getHeader("user-agent");
+        userAgent = UserAgent.parseUserAgentString(userAgentString);
+        request.setAttribute(AGENT_INFO_TOKEN, userAgent);
+
+        return userAgent;
     }
 
     /**
