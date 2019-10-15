@@ -161,9 +161,9 @@ public enum OperatingSystem {
     /**
      * Tizen is a Linux Foundation project. Mostly used by various Samsung devices.
      *
+     * Not specified how devices like car display or a fridge would identify themselves.
      * @see <a href="https://wiki.tizen.org/Tizen_Browser">Tizen Browser user-agent format</a>
      * @see <a href="http://developer.samsung.com/technical-doc/view.do?v=T000000203">Samsung Internet User-Agent String Format</a>
-     * Not specified how devices like car display or a fridge would identify themselves.
      */
     TIZEN(Manufacturer.LINUX_FOUNDATION, null, 101, "Tizen", new String[]{"Tizen"}, null, DeviceType.UNKNOWN, null),
     TIZEN3(Manufacturer.LINUX_FOUNDATION, OperatingSystem.TIZEN, 30, "Tizen 3", new String[]{"Tizen 3."}, null, DeviceType.UNKNOWN, null),
@@ -394,6 +394,7 @@ public enum OperatingSystem {
      * Be aware that if the order of the provided operating systems is incorrect or the set is too limited it can lead to false matches!
      *
      * @param agentString User-agent string as provided in the request.
+     * @param operatingSystems List of {@link OperatingSystem} to parse.
      * @return OperatingSystem enum
      */
     public static OperatingSystem parseUserAgentString(String agentString, List<OperatingSystem> operatingSystems) {
