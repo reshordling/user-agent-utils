@@ -30,7 +30,7 @@ This library has been deployed at https://bintray.com/wizpanda/maven/user-agent-
 ### Gradle
 
 ```groovy
-compile "com.wizpanda:user-agent-utils:0.0.2"
+compile "com.wizpanda:user-agent-utils:0.0.3"
 ```
 
 ### Maven
@@ -39,7 +39,7 @@ compile "com.wizpanda:user-agent-utils:0.0.2"
 <dependency>
    <groupId>com.wizpanda</groupId>
    <artifactId>user-agent-utils</artifactId>
-   <version>0.0.2</version>
+   <version>0.0.3</version>
 </dependency>
 ```
 

@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.0.3
+
+1. Fixed access scope of helper methods.
+
 ## v0.0.2
 
 1. Added `static UserAgent from(HttpServletRequest request)` method.
