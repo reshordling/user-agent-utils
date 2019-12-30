@@ -363,7 +363,8 @@ public enum Browser {
     SEAMONKEY(Manufacturer.OTHER, null, 15, "SeaMonkey", new String[]{"SeaMonkey"}, null, BrowserType.WEB_BROWSER, RenderingEngine.GECKO, new PatternBasedVersionFetcher("SeaMonkey\\/(([0-9]+)\\.?([\\w]+)?(\\.[\\w]+)?)")), // using Gecko Engine
 
     BOT(Manufacturer.OTHER, null, 12, "Robot/Spider", new String[]{"Googlebot", "Mediapartners-Google", "Web Preview", "bot", "Applebot", "spider", "crawler", "Feedfetcher", "Slurp", "Twiceler", "Nutch", "BecomeBot",
-            "bingbot", "BingPreview", "Google Web Preview", "WordPress.com mShots", "Seznam", "facebookexternalhit", "YandexMarket", "Teoma", "ThumbSniper", "Phantom",
+            "bingbot", "BingPreview", "Google Web Preview", "WordPress.com mShots", "Seznam", "facebookexternalhit", "YandexMarket",
+            "Teoma", "ThumbSniper", "Phantom", "SkypeUriPreview", "Slackbot", "Slack-ImgProxy", "GoogleImageProxy",
             "Go-http-client", "Java/", "python-requests", "YandexBot", "AdsBot-Google", "AhrefsBot"}, null, BrowserType.ROBOT, RenderingEngine.OTHER, null),
     BOT_MOBILE(Manufacturer.OTHER, Browser.BOT, 20, "Mobile Robot/Spider", new String[]{"Googlebot-Mobile"}, null, BrowserType.ROBOT, RenderingEngine.OTHER, null),
 
