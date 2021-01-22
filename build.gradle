@@ -9,7 +9,7 @@ buildscript {
 }
 
 group "com.wizpanda"
-version "0.0.3"
+version "0.0.3.rl"
 
 apply plugin: "java"
 apply plugin: "maven"

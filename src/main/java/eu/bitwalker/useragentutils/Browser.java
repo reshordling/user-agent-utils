@@ -51,6 +51,17 @@ import eu.bitwalker.useragentutils.browser.SafariUtils;
 
 public enum Browser {
 
+    QQ(Manufacturer.OTHER, null, 1000, "QQ", new String[] { "TencentTraveler", "Tencent", "QQBrowser", "QQ" }, null, BrowserType.WEB_BROWSER, RenderingEngine.TRIDENT, null),
+    Maxthon(Manufacturer.OTHER, null, 1001, "Maxthon", new String[] { "Maxthon" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    TheWorld(Manufacturer.OTHER, null, 1002, "TheWorld", new String[] { "TheWorld", "The World" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    QiHu(Manufacturer.OTHER, null, 1003, "360", new String[] { "360se", "360ee", "QIHU" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    Sogou(Manufacturer.OTHER, null, 1004, "sogou", new String[] { "MetaSr", " SE " }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    Baidu(Manufacturer.OTHER, null, 1005, "Baidu", new String[] { "BIDUBrowser", "Baidu" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    Liebao(Manufacturer.OTHER, null, 1006, "Liebao", new String[] { "LBBROWSER" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    Taobao(Manufacturer.OTHER, null, 1007, "Taobao", new String[] { "TaoBrowser", "Taobao" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    Wangpai_2345(Manufacturer.OTHER, null, 1008, "2345", new String[] { "2345Explorer", "2345" }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+    UC(Manufacturer.OTHER, null, 1009, "UC", new String[] { "UCWEB", " UC " }, null, BrowserType.WEB_BROWSER, RenderingEngine.OTHER, null),
+
     /**
      * Outlook email client
      */
@@ -406,11 +417,11 @@ public enum Browser {
     private static List<Browser> topLevelBrowsers;
 
 
-    private Browser(Manufacturer manufacturer, Browser parent, int versionId, String name, String[] aliases, String[] exclude, BrowserType browserType, RenderingEngine renderingEngine, VersionFetcher versionFetcher) {
+    Browser(Manufacturer manufacturer, Browser parent, int versionId, String name, String[] aliases, String[] exclude, BrowserType browserType, RenderingEngine renderingEngine, VersionFetcher versionFetcher) {
         this.id = (short) ((manufacturer.getId() << 8) + (byte) versionId);
         this.name = name;
         this.parent = parent;
-        this.children = new ArrayList<Browser>();
+        this.children = new ArrayList<>();
         this.aliases = Utils.toLowerCase(aliases);
         this.excludeList = Utils.toLowerCase(exclude);
         this.browserType = browserType;
@@ -427,7 +438,7 @@ public enum Browser {
     // create collection of top level browsers during initialization
     private static void addTopLevelBrowser(Browser browser) {
         if (topLevelBrowsers == null)
-            topLevelBrowsers = new ArrayList<Browser>();
+            topLevelBrowsers = new ArrayList<>();
         topLevelBrowsers.add(browser);
     }
 
